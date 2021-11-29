@@ -1,0 +1,18 @@
+for i in range(10):
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    time.sleep(5)
+
+imgs = driver.find_elements_by_class_name("tip tip_4 aimg_tip")
+keyword="inkyung97"
+path = os.path.join(keyword)
+
+if not os.path.exists(path):
+    os.mkdir(path)
+else:
+    pass
+count = 0
+for img in imgs:
+    save_as = os.path.join(path, keyword + str(count) + '.jpg')
+    # print(img.get_attribute("src"))
+    wget.download(img.get_attribute("src"), save_as)
+    count += 1
